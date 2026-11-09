@@ -1,0 +1,8 @@
+unique_name: Revenue Fiscal YTD Prior Year
+object_type: metric_calc
+label: Revenue Fiscal YTD Prior Year
+description: Fiscal year-to-date revenue through the same fiscal month one year earlier.
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Fiscal YTD]) THEN NULL ELSE (ParallelPeriod([Date Dimension].[Fiscal
+  Calendar].[Fiscal Year], 1, [Date Dimension].[Fiscal Calendar].CurrentMember), [Measures].[Revenue Fiscal
+  YTD]) END
+format: $#,##0

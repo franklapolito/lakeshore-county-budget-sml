@@ -14,6 +14,8 @@ columns:
   data_type: long
 - name: FUND_KEY
   data_type: long
+- name: POSITION_CLASS_KEY
+  data_type: long
 - name: FISCAL_YEAR
   data_type: int
 - name: FISCAL_MONTH

@@ -1,0 +1,8 @@
+unique_name: Revenue Growth Fiscal YTD vs Prior Year
+object_type: metric_calc
+label: Revenue Growth Fiscal YTD vs Prior Year
+description: Year-to-date revenue growth versus the same months of the prior fiscal year.
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Fiscal YTD]) OR ISEMPTY([Measures].[Revenue Fiscal YTD
+  Prior Year]) OR [Measures].[Revenue Fiscal YTD Prior Year] = 0 THEN NULL ELSE ([Measures].[Revenue Fiscal
+  YTD] - [Measures].[Revenue Fiscal YTD Prior Year]) / [Measures].[Revenue Fiscal YTD Prior Year] END
+format: percent

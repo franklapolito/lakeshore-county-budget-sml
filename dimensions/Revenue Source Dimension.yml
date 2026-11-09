@@ -1,0 +1,44 @@
+unique_name: Revenue Source Dimension
+object_type: dimension
+label: Revenue Source Dimension
+description: 'The fifteen sources county revenue is budgeted and collected in: Taxes (property, sales,
+  motor fuel, other), Intergovernmental (state shared revenue, federal and state grants, Medicaid), Charges
+  for Services (patient service revenue, fees and licenses, fines), Other Financing (investment income,
+  bond proceeds, transfers in, miscellaneous). Applies to the revenue metrics only; expenditure and position
+  measures are empty by revenue source.'
+type: standard
+hierarchies:
+- unique_name: Revenue Hierarchy
+  label: Revenue Hierarchy
+  description: Revenue Category > Revenue Source.
+  folder: Revenue Attributes
+  levels:
+  - unique_name: Revenue Category
+  - unique_name: Revenue Source
+    secondary_attributes:
+    - unique_name: Revenue Source Code
+      label: Revenue Source Code
+      description: Revenue account code (R100-R430).
+      folder: Revenue Attributes
+      dataset: DIM_REVENUE_SOURCE
+      name_column: REVENUE_SOURCE_CODE
+      key_columns:
+      - REVENUE_SOURCE_CODE
+level_attributes:
+- unique_name: Revenue Category
+  label: Revenue Category
+  description: Taxes, Intergovernmental, Charges for Services or Other Financing.
+  dataset: DIM_REVENUE_SOURCE
+  key_columns:
+  - REVENUE_CATEGORY
+  name_column: REVENUE_CATEGORY
+  sort_column: REVENUE_CATEGORY
+- unique_name: Revenue Source
+  label: Revenue Source
+  description: The revenue source.
+  dataset: DIM_REVENUE_SOURCE
+  is_unique_key: true
+  key_columns:
+  - REVENUE_SOURCE_KEY
+  name_column: REVENUE_SOURCE_NAME
+  sort_column: REVENUE_SOURCE_CODE

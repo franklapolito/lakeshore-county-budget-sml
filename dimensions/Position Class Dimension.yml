@@ -1,0 +1,34 @@
+unique_name: Position Class Dimension
+object_type: dimension
+label: Position Class Dimension
+description: 'The class of a budgeted position: Sworn (police, corrections and court officers), Civilian,
+  Clinical (hospital and health staff), Administrative, Skilled Trades. Bargaining Unit is Represented
+  (union) or Non-represented. Applies to the position metrics only; budget and revenue measures are empty
+  by position class.'
+type: standard
+hierarchies:
+- unique_name: Position Class Hierarchy
+  label: Position Class Hierarchy
+  description: Bargaining Unit > Position Class.
+  folder: Position Attributes
+  levels:
+  - unique_name: Bargaining Unit
+  - unique_name: Position Class
+level_attributes:
+- unique_name: Bargaining Unit
+  label: Bargaining Unit
+  description: Represented (covered by a collective bargaining agreement) or Non-represented.
+  dataset: DIM_POSITION_CLASS
+  key_columns:
+  - BARGAINING_UNIT
+  name_column: BARGAINING_UNIT
+  sort_column: BARGAINING_UNIT
+- unique_name: Position Class
+  label: Position Class
+  description: Sworn, Civilian, Clinical, Administrative or Skilled Trades.
+  dataset: DIM_POSITION_CLASS
+  is_unique_key: true
+  key_columns:
+  - POSITION_CLASS_KEY
+  name_column: POSITION_CLASS_NAME
+  sort_column: POSITION_CLASS_KEY

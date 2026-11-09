@@ -89,6 +89,7 @@ CREATE OR REPLACE TABLE FACT_POSITION_SNAPSHOT (
   DATE_KEY                NUMBER(8,0)    NOT NULL,
   DEPARTMENT_KEY          NUMBER(4,0)    NOT NULL,
   FUND_KEY                NUMBER(4,0)    NOT NULL,
+  POSITION_CLASS_KEY      NUMBER(4,0)    NOT NULL,
   FISCAL_YEAR             NUMBER(4,0)    NOT NULL,
   FISCAL_MONTH            NUMBER(2,0)    NOT NULL,
   BUDGETED_FTE            NUMBER(9,1)    NOT NULL,
@@ -96,4 +97,34 @@ CREATE OR REPLACE TABLE FACT_POSITION_SNAPSHOT (
   VACANT_FTE              NUMBER(9,1)    NOT NULL,
   CONSTRAINT PK_FACT_POSITION_SNAPSHOT PRIMARY KEY (POSITION_SNAPSHOT_KEY)
 );
-COMMENT ON TABLE FACT_POSITION_SNAPSHOT IS 'Month-end snapshot of budgeted, filled and vacant full-time-equivalent positions by department and fund. A BALANCE, not a flow: never sum across months. The count for a period is the last month-end in that period.';
+COMMENT ON TABLE FACT_POSITION_SNAPSHOT IS 'Month-end snapshot of budgeted, filled and vacant full-time-equivalent positions by department, fund and position class. A BALANCE, not a flow: never sum across months. The count for a period is the last month-end in that period.';
+
+CREATE OR REPLACE TABLE DIM_POSITION_CLASS (
+  POSITION_CLASS_KEY    NUMBER(4,0)   NOT NULL,
+  POSITION_CLASS_NAME   VARCHAR(20)   NOT NULL,
+  BARGAINING_UNIT       VARCHAR(20)   NOT NULL,
+  CONSTRAINT PK_DIM_POSITION_CLASS PRIMARY KEY (POSITION_CLASS_KEY)
+);
+COMMENT ON TABLE DIM_POSITION_CLASS IS 'Position classes: Sworn, Civilian, Clinical, Administrative, Skilled Trades, with the bargaining unit (Represented or Non-represented).';
+
+CREATE OR REPLACE TABLE DIM_REVENUE_SOURCE (
+  REVENUE_SOURCE_KEY    NUMBER(4,0)   NOT NULL,
+  REVENUE_SOURCE_CODE   VARCHAR(4)    NOT NULL,
+  REVENUE_SOURCE_NAME   VARCHAR(30)   NOT NULL,
+  REVENUE_CATEGORY      VARCHAR(25)   NOT NULL,
+  CONSTRAINT PK_DIM_REVENUE_SOURCE PRIMARY KEY (REVENUE_SOURCE_KEY)
+);
+COMMENT ON TABLE DIM_REVENUE_SOURCE IS 'The fifteen revenue sources in the hierarchy Revenue Category > Revenue Source: Taxes, Intergovernmental, Charges for Services, Other Financing.';
+
+CREATE OR REPLACE TABLE FACT_REVENUE (
+  REVENUE_KEY             NUMBER(10,0)   NOT NULL,
+  DATE_KEY                NUMBER(8,0)    NOT NULL,
+  FUND_KEY                NUMBER(4,0)    NOT NULL,
+  REVENUE_SOURCE_KEY      NUMBER(4,0)    NOT NULL,
+  FISCAL_YEAR             NUMBER(4,0)    NOT NULL,
+  FISCAL_MONTH            NUMBER(2,0)    NOT NULL,
+  REVENUE_BUDGET_AMOUNT   NUMBER(16,2)   NOT NULL,
+  REVENUE_ACTUAL_AMOUNT   NUMBER(16,2)   NOT NULL,
+  CONSTRAINT PK_FACT_REVENUE PRIMARY KEY (REVENUE_KEY)
+);
+COMMENT ON TABLE FACT_REVENUE IS 'Revenue budget and actual at month-end x fund x revenue source, FY2023 to FY2026 through October 2026. REVENUE_BUDGET_AMOUNT is the adopted revenue estimate allotted on each source''s expected collection pattern (property tax in two instalments, March and August; bond proceeds in one February issuance; grants quarterly), so the sum over a fiscal year is the adopted revenue budget. REVENUE_ACTUAL_AMOUNT is what was collected in the month.';

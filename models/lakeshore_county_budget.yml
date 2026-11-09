@@ -10,7 +10,9 @@ description: Budget versus actual for Lakeshore County, a fictional large metrop
   is Adjusted Budget minus Expenditures, negative when over budget; through October it is the year-to-date
   test. Budgeted, Filled and Vacant Positions are month-end balances that take the last month in any period
   and are never summed across months. Prior-fiscal-year and fiscal year-to-date measures resolve at Fiscal
-  Year, Fiscal Quarter and Fiscal Month.
+  Year, Fiscal Quarter and Fiscal Month. Revenue (budget, actual, variance, net position) is by fund and
+  revenue source, never by department. Positions carry a position class (sworn, civilian, clinical, administrative,
+  skilled trades).
 visible: true
 relationships:
 - unique_name: FACT_BUDGET_ACTUAL_Date_Dimension
@@ -69,6 +71,38 @@ relationships:
   to:
     dimension: Fund Dimension
     level: Fund
+- unique_name: FACT_POSITION_SNAPSHOT_Position_Class_Dimension
+  from:
+    dataset: FACT_POSITION_SNAPSHOT
+    join_columns:
+    - POSITION_CLASS_KEY
+  to:
+    dimension: Position Class Dimension
+    level: Position Class
+- unique_name: FACT_REVENUE_Date_Dimension
+  from:
+    dataset: FACT_REVENUE
+    join_columns:
+    - DATE_KEY
+  to:
+    dimension: Date Dimension
+    level: Day
+- unique_name: FACT_REVENUE_Fund_Dimension
+  from:
+    dataset: FACT_REVENUE
+    join_columns:
+    - FUND_KEY
+  to:
+    dimension: Fund Dimension
+    level: Fund
+- unique_name: FACT_REVENUE_Revenue_Source_Dimension
+  from:
+    dataset: FACT_REVENUE
+    join_columns:
+    - REVENUE_SOURCE_KEY
+  to:
+    dimension: Revenue Source Dimension
+    level: Revenue Source
 metrics:
 - unique_name: Adopted Budget
   folder: Budget
@@ -92,6 +126,12 @@ metrics:
   folder: Positions
 - unique_name: Vacant Positions
   folder: Positions
+- unique_name: Revenue Budget
+  folder: Revenue
+- unique_name: Revenue Actual
+  folder: Revenue
+- unique_name: Revenue Variance
+  folder: Revenue
 - unique_name: Percent of Budget Spent
   folder: Variance
 - unique_name: Expenditures Fiscal YTD
@@ -116,5 +156,19 @@ metrics:
   folder: Calendar Contrast
 - unique_name: Expenditures Prior Calendar Year
   folder: Calendar Contrast
+- unique_name: Percent of Revenue Budget Collected
+  folder: Revenue
+- unique_name: Revenue Fiscal YTD
+  folder: Time Relative
+- unique_name: Revenue Budget Fiscal YTD
+  folder: Time Relative
+- unique_name: Revenue Fiscal YTD Prior Year
+  folder: Time Relative
+- unique_name: Revenue Growth Fiscal YTD vs Prior Year
+  folder: Time Relative
+- unique_name: Net Position
+  folder: Revenue
+- unique_name: Net Budget
+  folder: Revenue
 - unique_name: Vacancy Rate
   folder: Positions

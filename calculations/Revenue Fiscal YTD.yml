@@ -1,0 +1,9 @@
+unique_name: Revenue Fiscal YTD
+object_type: metric_calc
+label: Revenue Fiscal YTD
+description: Revenue collected from 1 December of the fiscal year through the selected fiscal month or
+  quarter.
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Actual]) THEN NULL ELSE Aggregate(PeriodsToDate([Date
+  Dimension].[Fiscal Calendar].[Fiscal Year], [Date Dimension].[Fiscal Calendar].CurrentMember), [Measures].[Revenue
+  Actual]) END
+format: $#,##0

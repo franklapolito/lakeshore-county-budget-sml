@@ -1,0 +1,8 @@
+unique_name: Net Budget
+object_type: metric_calc
+label: Net Budget
+description: 'Revenue Budget minus Adjusted Budget: the planned surplus (positive) or deficit for the
+  period. By fund and time only.'
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Budget]) OR ISEMPTY([Measures].[Adjusted Budget]) THEN
+  NULL ELSE [Measures].[Revenue Budget] - [Measures].[Adjusted Budget] END
+format: $#,##0

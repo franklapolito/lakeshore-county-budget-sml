@@ -1,0 +1,12 @@
+unique_name: Revenue Budget
+object_type: metric
+label: Revenue Budget
+description: 'The adopted revenue estimate, allotted over the fiscal months on each source''s expected
+  collection pattern (property tax lands in March and August). Over a whole fiscal year it is the adopted
+  revenue budget; through October it is the year-to-date estimate. By fund and revenue source only: empty
+  by department and expense type. General Fund FY2026 through October: $1,677.3M.'
+calculation_method: sum
+dataset: FACT_REVENUE
+column: REVENUE_BUDGET_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

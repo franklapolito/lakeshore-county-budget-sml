@@ -1,0 +1,15 @@
+unique_name: DIM_REVENUE_SOURCE
+object_type: dataset
+label: DIM_REVENUE_SOURCE
+description: The fifteen revenue sources in the hierarchy Revenue Category > Revenue Source.
+connection_id: Connection - Lakeshore County Budget
+table: DIM_REVENUE_SOURCE
+columns:
+- name: REVENUE_SOURCE_KEY
+  data_type: long
+- name: REVENUE_SOURCE_CODE
+  data_type: string
+- name: REVENUE_SOURCE_NAME
+  data_type: string
+- name: REVENUE_CATEGORY
+  data_type: string

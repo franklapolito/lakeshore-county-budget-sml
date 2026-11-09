@@ -1,0 +1,8 @@
+unique_name: Revenue Budget Fiscal YTD
+object_type: metric_calc
+label: Revenue Budget Fiscal YTD
+description: Revenue estimate allotted from 1 December through the selected fiscal month or quarter.
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Budget]) THEN NULL ELSE Aggregate(PeriodsToDate([Date
+  Dimension].[Fiscal Calendar].[Fiscal Year], [Date Dimension].[Fiscal Calendar].CurrentMember), [Measures].[Revenue
+  Budget]) END
+format: $#,##0

@@ -1,0 +1,14 @@
+unique_name: DIM_POSITION_CLASS
+object_type: dataset
+label: DIM_POSITION_CLASS
+description: Position classes (Sworn, Civilian, Clinical, Administrative, Skilled Trades) and their bargaining
+  unit.
+connection_id: Connection - Lakeshore County Budget
+table: DIM_POSITION_CLASS
+columns:
+- name: POSITION_CLASS_KEY
+  data_type: long
+- name: POSITION_CLASS_NAME
+  data_type: string
+- name: BARGAINING_UNIT
+  data_type: string

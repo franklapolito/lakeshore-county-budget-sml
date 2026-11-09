@@ -1,0 +1,10 @@
+unique_name: Revenue Variance
+object_type: metric
+label: Revenue Variance
+description: 'Revenue Actual minus Revenue Budget. Negative means collections are behind the estimate.
+  General Fund FY2026 through October: -$20.3M, driven by sales tax (-$19.1M) and fines (-$4.8M).'
+calculation_method: sum
+dataset: FACT_REVENUE
+column: REVENUE_VARIANCE_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

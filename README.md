@@ -65,6 +65,10 @@ Target warehouse: **Snowflake** (`LAKESHORE_COUNTY_BUDGET_DEMO.COUNTY_BUDGET`).
   Department, Expense Type.
 - **No `dimensions:` block in the model file**: a clean star, every dimension has a
   fact relationship, none is degenerate.
+- **Revenue is a third fact at fund x revenue source, with no department key.** Revenue
+  measures are empty by Organization and Expense Type (`empty` handling), and Net
+  Position is meaningful only by fund and time. Position Class joins the snapshot
+  only; budget and revenue measures are empty by it.
 - **No customer, vendor or person names.** Lakeshore County and every department
   are fictional; the structure follows a public US county chart of accounts.
 
@@ -72,19 +76,19 @@ Target warehouse: **Snowflake** (`LAKESHORE_COUNTY_BUDGET_DEMO.COUNTY_BUDGET`).
 
 | Object | Count |
 |---|---|
-| Datasets | 6 (2 facts, 4 dimension sources) |
-| Dimensions | 4 |
-| Hierarchies | 5 |
-| Level attributes | 15 |
-| Secondary attributes | 11 |
-| Base metrics | 11 |
-| Calculated metrics | 13 |
-| Model relationships | 7 |
-| Calculated columns | 3 (on `FACT_BUDGET_ACTUAL`) |
+| Datasets | 9 (3 facts, 6 dimension sources) |
+| Dimensions | 6 |
+| Hierarchies | 7 |
+| Level attributes | 19 |
+| Secondary attributes | 12 |
+| Base metrics | 14 |
+| Calculated metrics | 20 |
+| Model relationships | 11 |
+| Calculated columns | 4 (3 on `FACT_BUDGET_ACTUAL`, 1 on `FACT_REVENUE`) |
 | Role-play prefixes | none |
 | Snowflake bridges | none |
 
-Metric folders: Budget, Actuals, Variance, Time Relative, Calendar Contrast, Positions.
+Metric folders: Budget, Actuals, Variance, Revenue, Time Relative, Calendar Contrast, Positions.
 
 Caveats: FY2023 has no prior year, so prior-year measures are empty for it. At
 the Fiscal Year level FY2026 holds eleven months against FY2025's twelve; the

@@ -1,0 +1,29 @@
+unique_name: FACT_REVENUE
+object_type: dataset
+label: FACT_REVENUE
+description: Revenue budget and actual at month-end x fund x revenue source, FY2023 to FY2026 through
+  October 2026. The budget is the adopted revenue estimate allotted on each source's expected collection
+  pattern (property tax in two instalments, March and August), so a fiscal-year sum is the adopted revenue
+  budget and a year-to-date sum is the year-to-date estimate. Revenue is by fund, not by department.
+connection_id: Connection - Lakeshore County Budget
+table: FACT_REVENUE
+columns:
+- name: REVENUE_KEY
+  data_type: long
+- name: DATE_KEY
+  data_type: long
+- name: FUND_KEY
+  data_type: long
+- name: REVENUE_SOURCE_KEY
+  data_type: long
+- name: FISCAL_YEAR
+  data_type: int
+- name: FISCAL_MONTH
+  data_type: int
+- name: REVENUE_BUDGET_AMOUNT
+  data_type: decimal
+- name: REVENUE_ACTUAL_AMOUNT
+  data_type: decimal
+- name: REVENUE_VARIANCE_AMOUNT
+  data_type: decimal
+  sql: REVENUE_ACTUAL_AMOUNT - REVENUE_BUDGET_AMOUNT

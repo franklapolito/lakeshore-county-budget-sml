@@ -1,0 +1,9 @@
+unique_name: Percent of Revenue Budget Collected
+object_type: metric_calc
+label: Percent of Revenue Budget Collected
+description: 'Revenue Actual divided by Revenue Budget for the same period. General Fund FY2026 through
+  October: 98.8%; sales tax 95.4%, fines and forfeitures 90.1%, property tax 100.4%.'
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Actual]) OR ISEMPTY([Measures].[Revenue Budget]) OR
+  [Measures].[Revenue Budget] = 0 THEN NULL ELSE [Measures].[Revenue Actual] / [Measures].[Revenue Budget]
+  END
+format: percent

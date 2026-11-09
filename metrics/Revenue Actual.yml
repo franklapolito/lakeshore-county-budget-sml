@@ -1,0 +1,11 @@
+unique_name: Revenue Actual
+object_type: metric
+label: Revenue Actual
+description: 'Revenue collected in the month, by fund and revenue source. General Fund FY2026 through
+  October: $1,657.0M, 98.8% of the year-to-date estimate; sales tax (95.4%) and fines (90.1%) are the
+  shortfalls, investment income (112%) the offset. Empty by department and expense type.'
+calculation_method: sum
+dataset: FACT_REVENUE
+column: REVENUE_ACTUAL_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

@@ -1,0 +1,10 @@
+unique_name: Net Position
+object_type: metric_calc
+label: Net Position
+description: 'Revenue Actual minus Expenditures for the period: the operating result. Only meaningful
+  by fund (or all funds) and time, since revenue is not booked to departments. General Fund FY2026 through
+  October: +$93.5M, because both property-tax instalments are in and November''s spend is not; the adopted
+  budget planned a 1% surplus for the full year.'
+expression: CASE WHEN ISEMPTY([Measures].[Revenue Actual]) OR ISEMPTY([Measures].[Expenditures]) THEN
+  NULL ELSE [Measures].[Revenue Actual] - [Measures].[Expenditures] END
+format: $#,##0
