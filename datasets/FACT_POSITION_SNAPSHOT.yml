@@ -1,0 +1,26 @@
+unique_name: FACT_POSITION_SNAPSHOT
+object_type: dataset
+label: FACT_POSITION_SNAPSHOT
+description: 'Month-end snapshot of budgeted, filled and vacant full-time-equivalent positions by department
+  and fund. A balance, not a flow: the value for a period is the last month-end in it.'
+connection_id: Connection - Lakeshore County Budget
+table: FACT_POSITION_SNAPSHOT
+columns:
+- name: POSITION_SNAPSHOT_KEY
+  data_type: long
+- name: DATE_KEY
+  data_type: long
+- name: DEPARTMENT_KEY
+  data_type: long
+- name: FUND_KEY
+  data_type: long
+- name: FISCAL_YEAR
+  data_type: int
+- name: FISCAL_MONTH
+  data_type: int
+- name: BUDGETED_FTE
+  data_type: decimal
+- name: FILLED_FTE
+  data_type: decimal
+- name: VACANT_FTE
+  data_type: decimal

@@ -1,0 +1,11 @@
+unique_name: Adjusted Budget
+object_type: metric
+label: Adjusted Budget
+description: Adopted Budget plus Budget Amendments. THE budget figure every variance is measured against.
+  A department can be over its adopted budget and under its adjusted budget (Behavioral Health Services
+  in FY2026).
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: ADJUSTED_BUDGET_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

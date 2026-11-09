@@ -1,0 +1,16 @@
+unique_name: DIM_EXPENSE_TYPE
+object_type: dataset
+label: DIM_EXPENSE_TYPE
+description: The eleven object classes (expense types), grouped into Personnel, Operating, Capital, Fixed
+  Charges and Other.
+connection_id: Connection - Lakeshore County Budget
+table: DIM_EXPENSE_TYPE
+columns:
+- name: EXPENSE_TYPE_KEY
+  data_type: long
+- name: EXPENSE_TYPE_CODE
+  data_type: string
+- name: EXPENSE_TYPE_NAME
+  data_type: string
+- name: EXPENSE_CATEGORY
+  data_type: string

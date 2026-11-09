@@ -1,0 +1,9 @@
+unique_name: Percent of Budget Spent Fiscal YTD
+object_type: metric_calc
+label: Percent of Budget Spent Fiscal YTD
+description: Expenditures Fiscal YTD divided by Adjusted Budget Fiscal YTD. Above 100% means over budget
+  year to date; Corrections at FY2026 M11 is 105.0%.
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures Fiscal YTD]) OR ISEMPTY([Measures].[Adjusted Budget
+  Fiscal YTD]) OR [Measures].[Adjusted Budget Fiscal YTD] = 0 THEN NULL ELSE [Measures].[Expenditures
+  Fiscal YTD] / [Measures].[Adjusted Budget Fiscal YTD] END
+format: percent

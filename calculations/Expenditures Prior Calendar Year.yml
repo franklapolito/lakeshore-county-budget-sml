@@ -1,0 +1,7 @@
+unique_name: Expenditures Prior Calendar Year
+object_type: metric_calc
+label: Expenditures Prior Calendar Year
+description: Expenditures for the same calendar period one year earlier. Calendar hierarchy only.
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures]) THEN NULL ELSE (ParallelPeriod([Date Dimension].[Calendar].[Year],
+  1, [Date Dimension].[Calendar].CurrentMember), [Measures].[Expenditures]) END
+format: $#,##0

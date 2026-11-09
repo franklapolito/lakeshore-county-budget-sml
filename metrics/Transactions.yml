@@ -1,0 +1,9 @@
+unique_name: Transactions
+object_type: metric
+label: Transactions
+description: Count of payment transactions in the month.
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: TRANSACTION_COUNT
+format: '#,##0'
+unrelated_dimensions_handling: empty

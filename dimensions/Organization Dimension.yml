@@ -1,0 +1,63 @@
+unique_name: Organization Dimension
+object_type: dimension
+label: Organization Dimension
+description: 'The county organization: six function areas, nineteen bureaus, 43 departments. Elected officials
+  (Sheriff, Chief Judge, State''s Attorney, Assessor, Treasurer, County Clerk, Recorder of Deeds, Board
+  of Commissioners) run their own bureaus; the rest are appointed. ''The Sheriff'' is a bureau of four
+  departments (Police Services, Corrections, Court Services, Electronic Monitoring); ''Corrections'' is
+  one department in it.'
+type: standard
+hierarchies:
+- unique_name: Organization Hierarchy
+  label: Organization Hierarchy
+  description: Function Area > Bureau > Department.
+  folder: Organization Attributes
+  levels:
+  - unique_name: Function Area
+  - unique_name: Bureau
+  - unique_name: Department
+    secondary_attributes:
+    - unique_name: Department Code
+      label: Department Code
+      description: Four-character department code.
+      folder: Organization Attributes
+      dataset: DIM_DEPARTMENT
+      name_column: DEPARTMENT_CODE
+      key_columns:
+      - DEPARTMENT_CODE
+    - unique_name: Office Type
+      label: Office Type
+      description: 'Elected Official or Appointed: whether the department reports to an elected office.'
+      folder: Organization Attributes
+      dataset: DIM_DEPARTMENT
+      name_column: OFFICE_TYPE
+      key_columns:
+      - OFFICE_TYPE
+level_attributes:
+- unique_name: Function Area
+  label: Function Area
+  description: Public Safety, Health, Finance & Administration, Property & Taxation, Economic Development,
+    General Government.
+  dataset: DIM_DEPARTMENT
+  key_columns:
+  - FUNCTION_AREA
+  name_column: FUNCTION_AREA
+  sort_column: FUNCTION_AREA
+- unique_name: Bureau
+  label: Bureau
+  description: The bureau or elected office a department belongs to, e.g. Sheriff, County Health System,
+    Bureau of Finance.
+  dataset: DIM_DEPARTMENT
+  key_columns:
+  - BUREAU_NAME
+  name_column: BUREAU_NAME
+  sort_column: BUREAU_NAME
+- unique_name: Department
+  label: Department
+  description: The department.
+  dataset: DIM_DEPARTMENT
+  is_unique_key: true
+  key_columns:
+  - DEPARTMENT_KEY
+  name_column: DEPARTMENT_NAME
+  sort_column: DEPARTMENT_CODE

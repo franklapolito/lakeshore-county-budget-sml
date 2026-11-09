@@ -1,0 +1,11 @@
+unrelated_dimension_handling: empty
+warehouse: snowflake
+as_connection: SnowflakePartner
+database: LAKESHORE_COUNTY_BUDGET_DEMO
+schema: COUNTY_BUDGET
+model_unique_name: lakeshore_county_budget
+catalog_unique_name: lakeshore_county_budget_catalog
+currency: USD
+time_window: fiscal Dec-Nov plus calendar contrast
+semi_additive_default: last (position snapshot metrics)
+sml_version: '1.9'

@@ -1,0 +1,11 @@
+unique_name: Budget Amendments
+object_type: metric
+label: Budget Amendments
+description: 'Supplemental appropriations and transfers approved after adoption, in the month the Board
+  approved them. FY2026: $24.0M, of which $18.0M is the April 2026 Grants Fund supplemental for Behavioral
+  Health Services. Zero for most departments.'
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: AMENDMENT_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

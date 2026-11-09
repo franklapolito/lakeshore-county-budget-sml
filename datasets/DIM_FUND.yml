@@ -1,0 +1,19 @@
+unique_name: DIM_FUND
+object_type: dataset
+label: DIM_FUND
+description: 'The six county funds: fund type, fund category and whether the money is legally restricted.'
+connection_id: Connection - Lakeshore County Budget
+table: DIM_FUND
+columns:
+- name: FUND_KEY
+  data_type: long
+- name: FUND_CODE
+  data_type: string
+- name: FUND_NAME
+  data_type: string
+- name: FUND_TYPE
+  data_type: string
+- name: FUND_CATEGORY
+  data_type: string
+- name: IS_RESTRICTED
+  data_type: int

@@ -1,0 +1,13 @@
+unique_name: Adopted Budget
+object_type: metric
+label: Adopted Budget
+description: 'The appropriation the Board adopted, spread over the twelve fiscal months as allotments
+  (evenly, except debt service on its 1 Dec / 1 Jun payment schedule). Summed over a whole fiscal year
+  it is the adopted budget; summed through October it is the year-to-date allotment. FY2026 adopted, all
+  funds: $4.06B; through October (11 of 12 months): $3.72B. Does not include amendments; compare spend
+  to Adjusted Budget.'
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: ALLOTMENT_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

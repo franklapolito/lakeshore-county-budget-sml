@@ -1,0 +1,171 @@
+unique_name: Date Dimension
+object_type: dimension
+label: Date Dimension
+description: 'Two hierarchies over one calendar. Fiscal Calendar (Fiscal Year > Fiscal Quarter > Fiscal
+  Month > Day) is the hierarchy for all budget reporting: the county''s fiscal year runs 1 December to
+  30 November and is named for the calendar year it ends in, so FY2026 is December 2025 through November
+  2026. Calendar (Year > Quarter > Month > Day) exists to show what goes wrong when it is used instead:
+  debt service paid 1 December 2025 belongs to FY2026, not to 2025. Data is as of 31 October 2026, FY2026
+  month 11 of 12, so 91.7% of FY2026 has elapsed. Prior-year measures resolve at Fiscal Year, Fiscal Quarter
+  and Fiscal Month on the fiscal hierarchy and at Year, Quarter and Month on the calendar hierarchy. Facts
+  are monthly and join at the month-end day.'
+type: time
+hierarchies:
+- unique_name: Fiscal Calendar
+  label: Fiscal Calendar
+  description: Fiscal Year > Fiscal Quarter > Fiscal Month > Day. The default for budget questions.
+  folder: Fiscal Calendar
+  filter_empty: 'yes'
+  levels:
+  - unique_name: Fiscal Year
+  - unique_name: Fiscal Quarter
+    parallel_periods:
+    - key_columns:
+      - PRIOR_FISCAL_YEAR_QUARTER_KEY
+      level: Fiscal Year
+    secondary_attributes:
+    - unique_name: Fiscal Quarter Of Year
+      label: Fiscal Quarter Of Year
+      description: Quarter number within the fiscal year (1 = Dec-Feb, 4 = Sep-Nov).
+      folder: Fiscal Calendar
+      dataset: DIM_DATE
+      name_column: FISCAL_QUARTER_OF_YEAR
+      key_columns:
+      - FISCAL_QUARTER_OF_YEAR
+  - unique_name: Fiscal Month
+    parallel_periods:
+    - key_columns:
+      - PRIOR_FISCAL_YEAR_MONTH_KEY
+      level: Fiscal Year
+    secondary_attributes:
+    - unique_name: Fiscal Month Of Year
+      label: Fiscal Month Of Year
+      description: Month number within the fiscal year (1 = December, 12 = November). October 2026 is
+        11.
+      folder: Fiscal Calendar
+      dataset: DIM_DATE
+      name_column: FISCAL_MONTH_OF_YEAR
+      key_columns:
+      - FISCAL_MONTH_OF_YEAR
+  - unique_name: Day
+- unique_name: Calendar
+  label: Calendar
+  description: Year > Quarter > Month > Day. Not for budget reporting; see the dimension description.
+  folder: Calendar
+  filter_empty: 'yes'
+  levels:
+  - unique_name: Year
+  - unique_name: Quarter
+    parallel_periods:
+    - key_columns:
+      - PRIOR_YEAR_QUARTER_KEY
+      level: Year
+    secondary_attributes:
+    - unique_name: Quarter Of Year
+      label: Quarter Of Year
+      description: Calendar quarter number (1-4).
+      folder: Calendar
+      dataset: DIM_DATE
+      name_column: QUARTER_OF_YEAR
+      key_columns:
+      - QUARTER_OF_YEAR
+  - unique_name: Month
+    parallel_periods:
+    - key_columns:
+      - PRIOR_YEAR_MONTH_KEY
+      level: Year
+    secondary_attributes:
+    - unique_name: Month Of Year
+      label: Month Of Year
+      description: Calendar month number (1-12).
+      folder: Calendar
+      dataset: DIM_DATE
+      name_column: MONTH_OF_YEAR
+      key_columns:
+      - MONTH_OF_YEAR
+  - unique_name: Day
+    secondary_attributes:
+    - unique_name: Month End Flag
+      label: Month End Flag
+      description: 1 on the last day of a month. Every fact row sits on a month-end day.
+      folder: Calendar
+      dataset: DIM_DATE
+      name_column: IS_MONTH_END
+      key_columns:
+      - IS_MONTH_END
+    - unique_name: Day Of Week Name
+      label: Day Of Week Name
+      description: Weekday name.
+      folder: Calendar
+      dataset: DIM_DATE
+      name_column: DAY_OF_WEEK_NAME
+      key_columns:
+      - DAY_OF_WEEK_NAME
+level_attributes:
+- unique_name: Fiscal Year
+  label: Fiscal Year
+  description: Fiscal year, 1 December to 30 November, named for the calendar year it ends in. FY2026
+    is 2025-12-01 to 2026-11-30 and is eleven months complete as of 31 October 2026.
+  dataset: DIM_DATE
+  key_columns:
+  - FISCAL_YEAR_KEY
+  name_column: FISCAL_YEAR_NAME
+  sort_column: FISCAL_YEAR_KEY
+  time_unit: year
+- unique_name: Fiscal Quarter
+  label: Fiscal Quarter
+  description: Fiscal quarter, e.g. FY2026 Q4 = September to November 2026. FY2026 Q4 holds two of its
+    three months as of October 2026.
+  dataset: DIM_DATE
+  key_columns:
+  - FISCAL_QUARTER_KEY
+  name_column: FISCAL_QUARTER_NAME
+  sort_column: FISCAL_QUARTER_KEY
+  time_unit: quarter
+- unique_name: Fiscal Month
+  label: Fiscal Month
+  description: Fiscal month, e.g. 'FY2026 M11 (Oct 2026)'. The leaf grain of both facts.
+  dataset: DIM_DATE
+  key_columns:
+  - FISCAL_MONTH_KEY
+  name_column: FISCAL_MONTH_NAME
+  sort_column: FISCAL_MONTH_KEY
+  time_unit: month
+- unique_name: Year
+  label: Year
+  description: Calendar year. December belongs to the NEXT fiscal year; do not use for budget reporting.
+  dataset: DIM_DATE
+  key_columns:
+  - YEAR_KEY
+  name_column: YEAR_NAME
+  sort_column: YEAR_KEY
+  time_unit: year
+- unique_name: Quarter
+  label: Quarter
+  description: Calendar quarter, e.g. 2026 Q3.
+  dataset: DIM_DATE
+  key_columns:
+  - QUARTER_KEY
+  name_column: QUARTER_NAME
+  sort_column: QUARTER_KEY
+  time_unit: quarter
+- unique_name: Month
+  label: Month
+  description: Calendar month, e.g. 2026-10.
+  dataset: DIM_DATE
+  key_columns:
+  - MONTH_KEY
+  name_column: MONTH_NAME
+  sort_column: MONTH_KEY
+  time_unit: month
+- unique_name: Day
+  label: Day
+  description: Calendar day. Leaf level and the join target for every date key; facts join on month-end
+    days.
+  dataset: DIM_DATE
+  is_unique_key: true
+  key_columns:
+  - DATE_KEY
+  name_column: DATE_NAME
+  sort_column: DATE_KEY
+  time_unit: day

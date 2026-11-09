@@ -1,0 +1,10 @@
+unique_name: Expenditure Growth Fiscal YTD vs Prior Year
+object_type: metric_calc
+label: Expenditure Growth Fiscal YTD vs Prior Year
+description: 'Year-to-date growth versus the same months of the prior fiscal year. At FY2026 M11: Health
+  function area +6.7%, Behavioral Health Services +27.3%, Emergency Management -15.4%.'
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures Fiscal YTD]) OR ISEMPTY([Measures].[Expenditures
+  Fiscal YTD Prior Year]) OR [Measures].[Expenditures Fiscal YTD Prior Year] = 0 THEN NULL ELSE ([Measures].[Expenditures
+  Fiscal YTD] - [Measures].[Expenditures Fiscal YTD Prior Year]) / [Measures].[Expenditures Fiscal YTD
+  Prior Year] END
+format: percent

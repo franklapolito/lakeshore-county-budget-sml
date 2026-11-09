@@ -1,0 +1,10 @@
+unique_name: Expenditure Growth vs Prior Fiscal Year
+object_type: metric_calc
+label: Expenditure Growth vs Prior Fiscal Year
+description: Expenditure change as a share of the prior fiscal period's spend. At the Fiscal Year level
+  FY2026 holds eleven months and FY2025 twelve, so use the Fiscal YTD growth measure for a like-for-like
+  comparison.
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures]) OR ISEMPTY([Measures].[Expenditures Prior Fiscal
+  Year]) OR [Measures].[Expenditures Prior Fiscal Year] = 0 THEN NULL ELSE ([Measures].[Expenditures]
+  - [Measures].[Expenditures Prior Fiscal Year]) / [Measures].[Expenditures Prior Fiscal Year] END
+format: percent

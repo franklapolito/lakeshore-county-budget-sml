@@ -1,0 +1,7 @@
+unique_name: Expenditure Change vs Prior Fiscal Year
+object_type: metric_calc
+label: Expenditure Change vs Prior Fiscal Year
+description: Expenditures minus Expenditures Prior Fiscal Year, same fiscal period.
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures]) OR ISEMPTY([Measures].[Expenditures Prior Fiscal
+  Year]) THEN NULL ELSE [Measures].[Expenditures] - [Measures].[Expenditures Prior Fiscal Year] END
+format: $#,##0

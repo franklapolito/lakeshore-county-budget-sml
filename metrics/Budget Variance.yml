@@ -1,0 +1,12 @@
+unique_name: Budget Variance
+object_type: metric
+label: Budget Variance
+description: 'Adjusted Budget minus Expenditures. Negative means over budget. Over a whole fiscal year
+  it compares a full-year budget to a full-year actual; through October it compares the year-to-date allotment
+  to year-to-date spend, which is the governed ''over budget'' test. FY2026 through October: four departments
+  are negative (Corrections -$15.9M, Facilities Management, Public Defender, Juvenile Detention Center).'
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: BUDGET_VARIANCE_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

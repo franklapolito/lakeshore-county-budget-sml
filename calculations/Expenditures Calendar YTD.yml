@@ -1,0 +1,9 @@
+unique_name: Expenditures Calendar YTD
+object_type: metric_calc
+label: Expenditures Calendar YTD
+description: 'Expenditures from 1 January through the selected calendar month. NOT a budget measure; here
+  to show the difference from the fiscal year. Debt service calendar 2026: $123.5M; FY2026: $250.4M.'
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures]) THEN NULL ELSE Aggregate(PeriodsToDate([Date
+  Dimension].[Calendar].[Year], [Date Dimension].[Calendar].CurrentMember), [Measures].[Expenditures])
+  END
+format: $#,##0

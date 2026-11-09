@@ -1,0 +1,8 @@
+unique_name: lakeshore_county_budget_catalog
+object_type: catalog
+label: Lakeshore County Budget
+description: 'Catalog for the Lakeshore County Budget model: budget versus actual and positions for a
+  fictional county.'
+version: 1.9
+aggressive_agg_promotion: false
+build_speculative_aggs: false

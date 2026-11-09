@@ -1,0 +1,19 @@
+unique_name: DIM_DEPARTMENT
+object_type: dataset
+label: DIM_DEPARTMENT
+description: The 43 departments in the organization hierarchy Function Area > Bureau > Department.
+connection_id: Connection - Lakeshore County Budget
+table: DIM_DEPARTMENT
+columns:
+- name: DEPARTMENT_KEY
+  data_type: long
+- name: DEPARTMENT_CODE
+  data_type: string
+- name: DEPARTMENT_NAME
+  data_type: string
+- name: BUREAU_NAME
+  data_type: string
+- name: FUNCTION_AREA
+  data_type: string
+- name: OFFICE_TYPE
+  data_type: string

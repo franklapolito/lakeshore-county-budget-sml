@@ -1,0 +1,10 @@
+unique_name: Encumbrances
+object_type: metric
+label: Encumbrances
+description: New purchase-order commitments issued in the month (contracts, capital, supplies). Issued
+  amounts, not an open balance.
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: ENCUMBRANCE_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

@@ -1,0 +1,9 @@
+unique_name: Budget Variance Fiscal YTD
+object_type: metric_calc
+label: Budget Variance Fiscal YTD
+description: Adjusted Budget Fiscal YTD minus Expenditures Fiscal YTD. Negative means over budget year
+  to date.
+expression: CASE WHEN ISEMPTY([Measures].[Adjusted Budget Fiscal YTD]) OR ISEMPTY([Measures].[Expenditures
+  Fiscal YTD]) THEN NULL ELSE [Measures].[Adjusted Budget Fiscal YTD] - [Measures].[Expenditures Fiscal
+  YTD] END
+format: $#,##0

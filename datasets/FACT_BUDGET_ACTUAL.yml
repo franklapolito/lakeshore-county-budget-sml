@@ -1,0 +1,44 @@
+unique_name: FACT_BUDGET_ACTUAL
+object_type: dataset
+label: FACT_BUDGET_ACTUAL
+description: 'Budget and actuals at month-end x fund x department x expense type, FY2023 to FY2026 through
+  October 2026. ALLOTMENT_AMOUNT is the adopted appropriation spread over the twelve fiscal months, so
+  its sum over a fiscal year is the adopted budget. AMENDMENT_AMOUNT lands in the month the Board approved
+  it. The three calculated columns are the governed arithmetic: adjusted budget, budget variance and available
+  balance.'
+connection_id: Connection - Lakeshore County Budget
+table: FACT_BUDGET_ACTUAL
+columns:
+- name: BUDGET_ACTUAL_KEY
+  data_type: long
+- name: DATE_KEY
+  data_type: long
+- name: FUND_KEY
+  data_type: long
+- name: DEPARTMENT_KEY
+  data_type: long
+- name: EXPENSE_TYPE_KEY
+  data_type: long
+- name: FISCAL_YEAR
+  data_type: int
+- name: FISCAL_MONTH
+  data_type: int
+- name: ALLOTMENT_AMOUNT
+  data_type: decimal
+- name: AMENDMENT_AMOUNT
+  data_type: decimal
+- name: EXPENDITURE_AMOUNT
+  data_type: decimal
+- name: ENCUMBRANCE_AMOUNT
+  data_type: decimal
+- name: TRANSACTION_COUNT
+  data_type: long
+- name: ADJUSTED_BUDGET_AMOUNT
+  data_type: decimal
+  sql: ALLOTMENT_AMOUNT + AMENDMENT_AMOUNT
+- name: BUDGET_VARIANCE_AMOUNT
+  data_type: decimal
+  sql: ALLOTMENT_AMOUNT + AMENDMENT_AMOUNT - EXPENDITURE_AMOUNT
+- name: AVAILABLE_BALANCE_AMOUNT
+  data_type: decimal
+  sql: ALLOTMENT_AMOUNT + AMENDMENT_AMOUNT - EXPENDITURE_AMOUNT - ENCUMBRANCE_AMOUNT

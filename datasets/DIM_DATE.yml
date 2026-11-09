@@ -1,0 +1,66 @@
+unique_name: DIM_DATE
+object_type: dataset
+label: DIM_DATE
+description: One row per day, 2022-12-01 to 2026-11-30, carrying a calendar hierarchy and a fiscal hierarchy.
+  The fiscal year runs 1 December to 30 November and is named for the calendar year it ends in (FY2026
+  = 2025-12-01 to 2026-11-30). The PRIOR_*_KEY columns hold the same quarter or month one year earlier
+  at that level's own grain and drive ParallelPeriod.
+connection_id: Connection - Lakeshore County Budget
+table: DIM_DATE
+columns:
+- name: DATE_KEY
+  data_type: long
+- name: DATE_NAME
+  data_type: string
+- name: FULL_DATE
+  data_type: date
+- name: DAY_OF_MONTH
+  data_type: int
+- name: DAY_OF_WEEK_NAME
+  data_type: string
+- name: IS_WEEKEND
+  data_type: int
+- name: IS_MONTH_END
+  data_type: int
+- name: MONTH_KEY
+  data_type: long
+- name: MONTH_NAME
+  data_type: string
+- name: MONTH_OF_YEAR
+  data_type: int
+- name: QUARTER_KEY
+  data_type: long
+- name: QUARTER_NAME
+  data_type: string
+- name: QUARTER_OF_YEAR
+  data_type: int
+- name: YEAR_KEY
+  data_type: long
+- name: YEAR_NAME
+  data_type: string
+- name: FISCAL_YEAR_KEY
+  data_type: long
+- name: FISCAL_YEAR_NAME
+  data_type: string
+- name: FISCAL_QUARTER_KEY
+  data_type: long
+- name: FISCAL_QUARTER_NAME
+  data_type: string
+- name: FISCAL_QUARTER_OF_YEAR
+  data_type: int
+- name: FISCAL_MONTH_KEY
+  data_type: long
+- name: FISCAL_MONTH_NAME
+  data_type: string
+- name: FISCAL_MONTH_OF_YEAR
+  data_type: int
+- name: PRIOR_YEAR_QUARTER_KEY
+  data_type: long
+- name: PRIOR_YEAR_MONTH_KEY
+  data_type: long
+- name: PRIOR_YEAR_DATE_KEY
+  data_type: long
+- name: PRIOR_FISCAL_YEAR_QUARTER_KEY
+  data_type: long
+- name: PRIOR_FISCAL_YEAR_MONTH_KEY
+  data_type: long

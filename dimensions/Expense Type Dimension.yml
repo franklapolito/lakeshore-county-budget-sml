@@ -1,0 +1,42 @@
+unique_name: Expense Type Dimension
+object_type: dimension
+label: Expense Type Dimension
+description: The eleven object classes money is budgeted and spent in, grouped as Personnel (salaries,
+  overtime, benefits), Operating (contracts, supplies, utilities, rent), Capital, Fixed Charges (debt
+  service) and Other (grants and transfers, contingency).
+type: standard
+hierarchies:
+- unique_name: Expense Hierarchy
+  label: Expense Hierarchy
+  description: Expense Category > Expense Type.
+  folder: Expense Attributes
+  levels:
+  - unique_name: Expense Category
+  - unique_name: Expense Type
+    secondary_attributes:
+    - unique_name: Object Code
+      label: Object Code
+      description: Three-digit object class code (100-900).
+      folder: Expense Attributes
+      dataset: DIM_EXPENSE_TYPE
+      name_column: EXPENSE_TYPE_CODE
+      key_columns:
+      - EXPENSE_TYPE_CODE
+level_attributes:
+- unique_name: Expense Category
+  label: Expense Category
+  description: Personnel, Operating, Capital, Fixed Charges or Other.
+  dataset: DIM_EXPENSE_TYPE
+  key_columns:
+  - EXPENSE_CATEGORY
+  name_column: EXPENSE_CATEGORY
+  sort_column: EXPENSE_CATEGORY
+- unique_name: Expense Type
+  label: Expense Type
+  description: The object class.
+  dataset: DIM_EXPENSE_TYPE
+  is_unique_key: true
+  key_columns:
+  - EXPENSE_TYPE_KEY
+  name_column: EXPENSE_TYPE_NAME
+  sort_column: EXPENSE_TYPE_CODE

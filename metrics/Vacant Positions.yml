@@ -1,0 +1,14 @@
+unique_name: Vacant Positions
+object_type: metric
+label: Vacant Positions
+description: 'Budgeted minus filled positions at month end (last non-empty over time). Corrections, October
+  2026: 639.8 vacant of 2,971.4 budgeted.'
+calculation_method: sum
+dataset: FACT_POSITION_SNAPSHOT
+column: VACANT_FTE
+format: '#,##0.0'
+unrelated_dimensions_handling: empty
+semi_additive:
+  position: last
+  relationships:
+  - FACT_POSITION_SNAPSHOT_Date_Dimension

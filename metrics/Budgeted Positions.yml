@@ -1,0 +1,15 @@
+unique_name: Budgeted Positions
+object_type: metric
+label: Budgeted Positions
+description: 'Budgeted full-time-equivalent positions, a month-end balance. The value for any period is
+  the LAST month-end in it, never a sum across months: the Sheriff has 5,338.1 budgeted positions as of
+  October 2026; summing FY2026''s months would give 58,719. Empty by expense type (positions have none).'
+calculation_method: sum
+dataset: FACT_POSITION_SNAPSHOT
+column: BUDGETED_FTE
+format: '#,##0.0'
+unrelated_dimensions_handling: empty
+semi_additive:
+  position: last
+  relationships:
+  - FACT_POSITION_SNAPSHOT_Date_Dimension

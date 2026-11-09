@@ -1,0 +1,9 @@
+unique_name: Expenditures Prior Fiscal Year
+object_type: metric_calc
+label: Expenditures Prior Fiscal Year
+description: 'Expenditures for the same fiscal period one year earlier (calendar-aware: FY2026 Q2 shows
+  FY2025 Q2). Resolves at Fiscal Year, Fiscal Quarter and Fiscal Month. Empty for FY2023.'
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures]) THEN NULL ELSE (ParallelPeriod([Date Dimension].[Fiscal
+  Calendar].[Fiscal Year], 1, [Date Dimension].[Fiscal Calendar].CurrentMember), [Measures].[Expenditures])
+  END
+format: $#,##0

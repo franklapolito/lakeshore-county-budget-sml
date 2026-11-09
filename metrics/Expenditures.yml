@@ -1,0 +1,11 @@
+unique_name: Expenditures
+object_type: metric
+label: Expenditures
+description: 'Cash spent in the month, all funds unless a fund is selected. FY2026 through October: $3.649B
+  all funds, $1.564B General Fund. Use the Fiscal Calendar hierarchy: by calendar year, December spend
+  lands in the wrong year.'
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: EXPENDITURE_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty

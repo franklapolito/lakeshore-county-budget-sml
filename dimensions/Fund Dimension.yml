@@ -1,0 +1,62 @@
+unique_name: Fund Dimension
+object_type: dimension
+label: Fund Dimension
+description: 'The six county funds: General Fund, Motor Fuel Tax Fund, Grants Fund, Capital Projects Fund,
+  Debt Service Fund and the Health Enterprise Fund. Restricted funds (grants, motor fuel tax, capital,
+  debt) are legally limited to a purpose: money cannot be moved out of them to cover a General Fund shortfall.
+  The county hospitals are in the Health Enterprise Fund, not the General Fund, so a General Fund total
+  excludes them.'
+type: standard
+hierarchies:
+- unique_name: Fund Hierarchy
+  label: Fund Hierarchy
+  description: Fund Type > Fund Category > Fund.
+  folder: Fund Attributes
+  levels:
+  - unique_name: Fund Type
+  - unique_name: Fund Category
+  - unique_name: Fund
+    secondary_attributes:
+    - unique_name: Fund Code
+      label: Fund Code
+      description: Four-digit fund number in the county chart of accounts.
+      folder: Fund Attributes
+      dataset: DIM_FUND
+      name_column: FUND_CODE
+      key_columns:
+      - FUND_CODE
+    - unique_name: Restricted Fund Flag
+      label: Restricted Fund Flag
+      description: 1 when the fund is legally restricted to a purpose (grants, motor fuel tax, capital,
+        debt).
+      folder: Fund Attributes
+      dataset: DIM_FUND
+      name_column: IS_RESTRICTED
+      key_columns:
+      - IS_RESTRICTED
+level_attributes:
+- unique_name: Fund Type
+  label: Fund Type
+  description: Governmental or Proprietary (the hospital enterprise).
+  dataset: DIM_FUND
+  key_columns:
+  - FUND_TYPE
+  name_column: FUND_TYPE
+  sort_column: FUND_TYPE
+- unique_name: Fund Category
+  label: Fund Category
+  description: General, Special Revenue, Capital Projects, Debt Service or Enterprise.
+  dataset: DIM_FUND
+  key_columns:
+  - FUND_CATEGORY
+  name_column: FUND_CATEGORY
+  sort_column: FUND_CATEGORY
+- unique_name: Fund
+  label: Fund
+  description: The fund.
+  dataset: DIM_FUND
+  is_unique_key: true
+  key_columns:
+  - FUND_KEY
+  name_column: FUND_NAME
+  sort_column: FUND_CODE

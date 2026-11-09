@@ -1,0 +1,10 @@
+unique_name: Percent of Budget Spent
+object_type: metric_calc
+label: Percent of Budget Spent
+description: 'Expenditures divided by Adjusted Budget. Over a whole fiscal year, compare it with the share
+  of the year elapsed (91.7% as of October 2026): the Sheriff bureau at 92.8% is over pace, the Bureau
+  of Asset Management at 78.4% is under. Through October it is spend against the year-to-date allotment,
+  so 100% means exactly on pace: Public Defender 102.9%, Sheriff 101.2%, Bureau of Asset Management 85.5%.'
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures]) OR ISEMPTY([Measures].[Adjusted Budget]) OR [Measures].[Adjusted
+  Budget] = 0 THEN NULL ELSE [Measures].[Expenditures] / [Measures].[Adjusted Budget] END
+format: percent

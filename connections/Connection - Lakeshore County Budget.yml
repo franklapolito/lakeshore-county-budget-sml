@@ -1,0 +1,6 @@
+unique_name: Connection - Lakeshore County Budget
+object_type: connection
+label: Connection - Lakeshore County Budget
+as_connection: SnowflakePartner
+database: LAKESHORE_COUNTY_BUDGET_DEMO
+schema: COUNTY_BUDGET

@@ -1,0 +1,14 @@
+unique_name: Filled Positions
+object_type: metric
+label: Filled Positions
+description: 'Filled full-time-equivalent positions at month end (last non-empty over time). Sheriff,
+  October 2026: 4,471.7.'
+calculation_method: sum
+dataset: FACT_POSITION_SNAPSHOT
+column: FILLED_FTE
+format: '#,##0.0'
+unrelated_dimensions_handling: empty
+semi_additive:
+  position: last
+  relationships:
+  - FACT_POSITION_SNAPSHOT_Date_Dimension

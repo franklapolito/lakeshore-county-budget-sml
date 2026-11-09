@@ -1,0 +1,120 @@
+unique_name: lakeshore_county_budget
+object_type: model
+label: Lakeshore County Budget
+description: Budget versus actual for Lakeshore County, a fictional large metropolitan county, defined
+  once and served to every BI tool and AI agent. The county's fiscal year runs 1 December to 30 November
+  and is named for the calendar year it ends in; all budget reporting uses the Fiscal Calendar hierarchy,
+  and a Calendar hierarchy is kept only to show the difference. Data is as of 31 October 2026 (FY2026
+  month 11 of 12). Adopted Budget is the adopted appropriation allotted across the twelve fiscal months;
+  Adjusted Budget adds amendments and is the figure every variance is measured against. Budget Variance
+  is Adjusted Budget minus Expenditures, negative when over budget; through October it is the year-to-date
+  test. Budgeted, Filled and Vacant Positions are month-end balances that take the last month in any period
+  and are never summed across months. Prior-fiscal-year and fiscal year-to-date measures resolve at Fiscal
+  Year, Fiscal Quarter and Fiscal Month.
+visible: true
+relationships:
+- unique_name: FACT_BUDGET_ACTUAL_Date_Dimension
+  from:
+    dataset: FACT_BUDGET_ACTUAL
+    join_columns:
+    - DATE_KEY
+  to:
+    dimension: Date Dimension
+    level: Day
+- unique_name: FACT_BUDGET_ACTUAL_Fund_Dimension
+  from:
+    dataset: FACT_BUDGET_ACTUAL
+    join_columns:
+    - FUND_KEY
+  to:
+    dimension: Fund Dimension
+    level: Fund
+- unique_name: FACT_BUDGET_ACTUAL_Organization_Dimension
+  from:
+    dataset: FACT_BUDGET_ACTUAL
+    join_columns:
+    - DEPARTMENT_KEY
+  to:
+    dimension: Organization Dimension
+    level: Department
+- unique_name: FACT_BUDGET_ACTUAL_Expense_Type_Dimension
+  from:
+    dataset: FACT_BUDGET_ACTUAL
+    join_columns:
+    - EXPENSE_TYPE_KEY
+  to:
+    dimension: Expense Type Dimension
+    level: Expense Type
+- unique_name: FACT_POSITION_SNAPSHOT_Date_Dimension
+  from:
+    dataset: FACT_POSITION_SNAPSHOT
+    join_columns:
+    - DATE_KEY
+  to:
+    dimension: Date Dimension
+    level: Day
+- unique_name: FACT_POSITION_SNAPSHOT_Organization_Dimension
+  from:
+    dataset: FACT_POSITION_SNAPSHOT
+    join_columns:
+    - DEPARTMENT_KEY
+  to:
+    dimension: Organization Dimension
+    level: Department
+- unique_name: FACT_POSITION_SNAPSHOT_Fund_Dimension
+  from:
+    dataset: FACT_POSITION_SNAPSHOT
+    join_columns:
+    - FUND_KEY
+  to:
+    dimension: Fund Dimension
+    level: Fund
+metrics:
+- unique_name: Adopted Budget
+  folder: Budget
+- unique_name: Budget Amendments
+  folder: Budget
+- unique_name: Adjusted Budget
+  folder: Budget
+- unique_name: Expenditures
+  folder: Actuals
+- unique_name: Encumbrances
+  folder: Actuals
+- unique_name: Transactions
+  folder: Actuals
+- unique_name: Budget Variance
+  folder: Variance
+- unique_name: Available Balance
+  folder: Variance
+- unique_name: Budgeted Positions
+  folder: Positions
+- unique_name: Filled Positions
+  folder: Positions
+- unique_name: Vacant Positions
+  folder: Positions
+- unique_name: Percent of Budget Spent
+  folder: Variance
+- unique_name: Expenditures Fiscal YTD
+  folder: Time Relative
+- unique_name: Adjusted Budget Fiscal YTD
+  folder: Time Relative
+- unique_name: Budget Variance Fiscal YTD
+  folder: Time Relative
+- unique_name: Percent of Budget Spent Fiscal YTD
+  folder: Time Relative
+- unique_name: Expenditures Prior Fiscal Year
+  folder: Time Relative
+- unique_name: Expenditure Change vs Prior Fiscal Year
+  folder: Time Relative
+- unique_name: Expenditure Growth vs Prior Fiscal Year
+  folder: Time Relative
+- unique_name: Expenditures Fiscal YTD Prior Year
+  folder: Time Relative
+- unique_name: Expenditure Growth Fiscal YTD vs Prior Year
+  folder: Time Relative
+- unique_name: Expenditures Calendar YTD
+  folder: Calendar Contrast
+- unique_name: Expenditures Prior Calendar Year
+  folder: Calendar Contrast
+- unique_name: Vacancy Rate
+  folder: Positions

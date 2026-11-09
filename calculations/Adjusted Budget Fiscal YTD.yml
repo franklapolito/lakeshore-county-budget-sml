@@ -1,0 +1,8 @@
+unique_name: Adjusted Budget Fiscal YTD
+object_type: metric_calc
+label: Adjusted Budget Fiscal YTD
+description: Adjusted budget allotted from 1 December through the selected fiscal month or quarter.
+expression: CASE WHEN ISEMPTY([Measures].[Adjusted Budget]) THEN NULL ELSE Aggregate(PeriodsToDate([Date
+  Dimension].[Fiscal Calendar].[Fiscal Year], [Date Dimension].[Fiscal Calendar].CurrentMember), [Measures].[Adjusted
+  Budget]) END
+format: $#,##0

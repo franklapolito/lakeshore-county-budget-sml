@@ -1,0 +1,9 @@
+unique_name: Expenditures Fiscal YTD Prior Year
+object_type: metric_calc
+label: Expenditures Fiscal YTD Prior Year
+description: 'Fiscal year-to-date expenditures through the same fiscal month one year earlier: at FY2026
+  M11 it is FY2025 through October 2025. The like-for-like base for year-over-year growth.'
+expression: CASE WHEN ISEMPTY([Measures].[Expenditures Fiscal YTD]) THEN NULL ELSE (ParallelPeriod([Date
+  Dimension].[Fiscal Calendar].[Fiscal Year], 1, [Date Dimension].[Fiscal Calendar].CurrentMember), [Measures].[Expenditures
+  Fiscal YTD]) END
+format: $#,##0

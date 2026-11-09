@@ -1,0 +1,9 @@
+unique_name: Available Balance
+object_type: metric
+label: Available Balance
+description: 'Adjusted Budget minus Expenditures minus Encumbrances: what is left to commit.'
+calculation_method: sum
+dataset: FACT_BUDGET_ACTUAL
+column: AVAILABLE_BALANCE_AMOUNT
+format: $#,##0
+unrelated_dimensions_handling: empty
