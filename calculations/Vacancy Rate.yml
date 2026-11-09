@@ -2,7 +2,8 @@ unique_name: Vacancy Rate
 object_type: metric_calc
 label: Vacancy Rate
 description: 'Vacant Positions divided by Budgeted Positions at the last month-end in the period. October
-  2026: Corrections 21.5%, county 10.6%, Sheriff bureau 16.2%.'
+  2026: Corrections 21.5%, county 10.6%, Sheriff bureau 16.2%. Include a time level (Fiscal Year = ''FY2026'')
+  in the query; the ratio of two all-time sums is still a rate but of the wrong population.'
 expression: CASE WHEN ISEMPTY([Measures].[Vacant Positions]) OR ISEMPTY([Measures].[Budgeted Positions])
   OR [Measures].[Budgeted Positions] = 0 THEN NULL ELSE [Measures].[Vacant Positions] / [Measures].[Budgeted
   Positions] END

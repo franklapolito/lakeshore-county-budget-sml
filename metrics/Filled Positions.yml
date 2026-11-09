@@ -2,7 +2,8 @@ unique_name: Filled Positions
 object_type: metric
 label: Filled Positions
 description: 'Filled full-time-equivalent positions at month end (last non-empty over time). Sheriff,
-  October 2026: 4,471.7.'
+  October 2026: 4,471.7. Always include a time level in the query (Fiscal Year = ''FY2026'' for the current
+  count); with none the engine sums every month-end.'
 calculation_method: sum
 dataset: FACT_POSITION_SNAPSHOT
 column: FILLED_FTE

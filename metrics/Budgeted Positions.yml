@@ -3,7 +3,10 @@ object_type: metric
 label: Budgeted Positions
 description: 'Budgeted full-time-equivalent positions, a month-end balance. The value for any period is
   the LAST month-end in it, never a sum across months: the Sheriff has 5,338.1 budgeted positions as of
-  October 2026; summing FY2026''s months would give 58,719. Empty by expense type (positions have none).'
+  October 2026; summing FY2026''s months would give 58,719. ALWAYS put a time level in the query (Fiscal
+  Year, Fiscal Quarter, Fiscal Month, Year or Month, e.g. Fiscal Year = ''FY2026'' for the current count):
+  with no time level the engine sums every month-end since 2022 and returns a number 46 times too large.
+  Empty by expense type (positions have none).'
 calculation_method: sum
 dataset: FACT_POSITION_SNAPSHOT
 column: BUDGETED_FTE

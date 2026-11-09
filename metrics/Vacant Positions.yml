@@ -2,7 +2,8 @@ unique_name: Vacant Positions
 object_type: metric
 label: Vacant Positions
 description: 'Budgeted minus filled positions at month end (last non-empty over time). Corrections, October
-  2026: 639.8 vacant of 2,971.4 budgeted.'
+  2026: 639.8 vacant of 2,971.4 budgeted. Always include a time level in the query (Fiscal Year = ''FY2026''
+  for the current count); with none the engine sums every month-end.'
 calculation_method: sum
 dataset: FACT_POSITION_SNAPSHOT
 column: VACANT_FTE
