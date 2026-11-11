@@ -2,8 +2,8 @@
 
 Budget versus actual for a fictional large metropolitan county: one governed
 definition of adopted, adjusted, spent, variance and positions, served to Power
-BI, Excel and every MCP client. Built for the FRC SLED seller enablement
-session (use case 2: AI assistants and agents that return the official number).
+BI, Excel and every MCP client. Built as a state and local government demo
+(AI assistants and agents that return the official number).
 
 Emitted by `lakeshore-county-budget/sml/emit_sml.py`; the data is generated
 by `lakeshore-county-budget/data/generate.py` (seed 42) and loaded by
